@@ -1,0 +1,26 @@
+name: Verilog Compiler
+description: Quickly run your Verilog code and verify it is error-free
+author: Jeremy Escobar
+branding:
+  icon: activity
+  color: gray-dark
+inputs:
+  repo-token:
+    description: Access token.
+    required: true
+  configuration-path:
+    description: Path to configuration file.
+    required: true
+  sync-labels:
+    description: Synchronize labels.
+    default: true
+  repository:
+    description: 'Owner/repo name.'
+    default: ${{ github.repository }}
+  ref:
+    description: Checkout reference.
+    default: ${{ github.event.ref }}
+runs:
+  using: node16
+  main: dist/index.js
+  post: dist/index.js
